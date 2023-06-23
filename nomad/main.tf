@@ -28,3 +28,16 @@ resource "google_compute_instance" "default" {
 
   metadata_startup_script = file(var.startup-script)
 }
+
+resource "google_compute_firewall" "default" {
+ name    = "nomad-ui"
+ network = "default"
+
+ allow {
+   protocol = "tcp"
+   ports    = ["4646"]
+ }
+
+ source_ranges = ["0.0.0.0/0"]
+ target_tags = ["nomad"]
+}
