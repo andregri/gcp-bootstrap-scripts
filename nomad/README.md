@@ -1,11 +1,12 @@
 # VM
 ```console
-$ cd vm
+$ cd nomad
 $ terraform init
 $ terraform apply \
   -var zone="us-east1-b" \
   -var gcp-creds="../sa.json" \
-  -var project=$(echo $GOOGLE_PROJECT)
+  -var project=$(echo $GOOGLE_PROJECT) \
+  -var startup-script="startup-scripts/nomad.sh"
 ```
 
 ## Cleanup
@@ -14,5 +15,6 @@ $ terraform apply \
 $ terraform destroy \
   -var zone="us-east1-b" \
   -var gcp-creds="../sa.json" \
-  -var project=$(echo $GOOGLE_PROJECT)
+  -var project=$(echo $GOOGLE_PROJECT) \
+  -var startup-script="startup-scripts/nomad.sh"
 ```
